@@ -1,0 +1,64 @@
+{
+	"liveValues": [
+		{
+			"range": {
+				"from": {
+					"line": 36,
+					"ch": 16
+				},
+				"to": {
+					"line": 36,
+					"ch": 17
+				}
+			},
+			"type": "number",
+			"name": "Flex"
+		},
+		{
+			"range": {
+				"from": {
+					"line": 36,
+					"ch": 30
+				},
+				"to": {
+					"line": 36,
+					"ch": 33
+				}
+			},
+			"type": "number",
+			"name": "MarginTop"
+		},
+		{
+			"range": {
+				"from": {
+					"line": 36,
+					"ch": 47
+				},
+				"to": {
+					"line": 36,
+					"ch": 55
+				}
+			},
+			"editWith": "dropdown",
+			"dropdownOptions": "AlignItems",
+			"type": "string",
+			"name": "AlignItems"
+		},
+		{
+			"range": {
+				"from": {
+					"line": 36,
+					"ch": 73
+				},
+				"to": {
+					"line": 36,
+					"ch": 81
+				}
+			},
+			"editWith": "dropdown",
+			"dropdownOptions": "JustifyContent",
+			"type": "string",
+			"name": "JustifyContent"
+		}
+	]
+}
