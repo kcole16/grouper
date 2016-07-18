@@ -71,10 +71,14 @@ function fetchToken(accessToken) {
   formData.append("token", accessToken);
   let obj = {
     method: 'POST',
+    headers: {
+      'Authorization': 'Basic YXBpQGdyb3VwZXIubmw6bnc2clN4U1h6TWhy'
+    },
     body: formData
   };
   return dispatch => {
       fetch(url, obj)
+        .then(req => console.log(req))
         .then(req => req.json())
         .then(json => dispatch(isLoggedIn(json)))
         .catch(err => console.log(err))
@@ -83,15 +87,20 @@ function fetchToken(accessToken) {
 
 function fetchQuestions() {
   let url = "http://api.bespokeweb.nl/questions?count=3&rand=true";
+  let obj = {
+    headers: {
+      'Authorization': 'Basic YXBpQGdyb3VwZXIubmw6bnc2clN4U1h6TWhy'
+    }
+  };
   return dispatch => {
-      fetch(url)
+      fetch(url, obj)
         .then(req => req.json())
         .then(json => dispatch(setQuestions(json)))
         .catch(err => console.log(err))
   }
 }
 
-function fetchAnswers(answers, userId) {
+function setAnswers(answers, userId) {
   let url = "http://api.bespokeweb.nl/answers";
   let formData = new FormData();
   formData.append("answers[1][question_id]", answers[0]['id']);
@@ -103,7 +112,10 @@ function fetchAnswers(answers, userId) {
   formData.append("user_id", userId);
   let obj = {
     method: 'POST',
-    body: formData
+    body: formData,
+    headers: {
+      'Authorization': 'Basic YXBpQGdyb3VwZXIubmw6bnc2clN4U1h6TWhy'
+    }
   };
   console.log(obj);
   return dispatch => {
@@ -122,7 +134,10 @@ function fetchLocation(location, userId) {
   formData.append("_method", "PUT");
   let obj = {
     method: 'POST',
-    body: formData
+    body: formData,
+    headers: {
+      'Authorization': 'Basic YXBpQGdyb3VwZXIubmw6bnc2clN4U1h6TWhy'
+    }
   };
   return dispatch => {
       fetch(url, obj)
@@ -137,7 +152,6 @@ async function saveState(state) {
 }
 
 export function registerUser(accessToken) {
-  console.log(accessToken);
   return dispatch => {
     dispatch(fetchToken(accessToken))
   }
@@ -151,7 +165,7 @@ export function getQuestions() {
 
 export function sendAnswers(answers, userId) {
   return dispatch => {
-    dispatch(fetchAnswers(answers, userId))
+    dispatch(setAnswers(answers, userId))
   }
 }
 
